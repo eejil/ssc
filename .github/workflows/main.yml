@@ -21,3 +21,6 @@ jobs:
         registry: docker.io
         repository: lanrell/ssc
         tag_with_sha: true
+        
+    - name: amazon deploy
+      run: aws cloudformation deploy --template-file cloudformation.yaml --stack-name sylvain-stack
