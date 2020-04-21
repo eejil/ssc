@@ -24,22 +24,22 @@ Resources:
     Properties:
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", HVM64]
       InstanceType: !Ref InstanceTypeParameter
- InstanceSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Allow http to client host
-      VpcId:
-        Ref: vpc-ecd3d196
-      SecurityGroupIngress:
-      - IpProtocol: tcp
-       FromPort: 80
-        ToPort: 80
-        CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 80
-        ToPort: 80
-        CidrIp: 0.0.0.0/0    
+# InstanceSecurityGroup:
+#    Type: AWS::EC2::SecurityGroup
+#    Properties:
+#     GroupDescription: Allow http to client host
+#    VpcId:
+#        Ref: vpc-ecd3d196
+#      SecurityGroupIngress:
+#      - IpProtocol: tcp
+#       FromPort: 80
+#        ToPort: 80
+#        CidrIp: 0.0.0.0/0
+#      SecurityGroupEgress:
+#      - IpProtocol: tcp
+#        FromPort: 80
+#        ToPort: 80
+#        CidrIp: 0.0.0.0/0    
 Outputs:
   InstanceID:
     Description: "The Instance ID"
