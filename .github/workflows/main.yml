@@ -25,7 +25,7 @@ jobs:
       
     - name: eks
       run: |
-        sed -i "s#IMAGE_NAME#Dockerfile#g" kustomization.yaml
+        sed -i "s#IMAGE_NAME#lanrell/ssc#g" kustomization.yaml
         sed -i "s/IMAGE_TAG/sha-$(git rev-parse --short HEAD)/g" kustomization.yaml
         aws eks update-kubeconfig --name isen
         kubectl kustomize . | kubectl apply -f -
