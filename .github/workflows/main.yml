@@ -25,14 +25,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: mgenteluci/cloudformation-deploy-action@v1.3.0
-      env:
-        AWS_STACK_NAME: 'sylvain-stack'
-        AWS_REGION: 'us-east-1'
-        AWS_ACCESS_KEY_ID: ASIA3LTHPFHCB7GORD4J
-        AWS_SECRET_ACCESS_KEY: fK1oXVq0n473bprHXKv7GN+FSNcyr92R8gIoIfYi
-        AWS_SESSION_TOKEN: FwoGZXIvYXdzEBIaDA6ItA1dNc/lag/82SLMARU7a6CbTyIzpxzTgcCPg1WkjFF8Qvp1apYkhBlo8EY47ZyKZKjTW77DMATaPqA7nkMLCsln+OEKByKADZcrccUC3ZVD0JQLmZMHbQfKYyBYqzFc+ldtJji9weFcfpYhpPbLgZgu7Ilv05u3hQ0fZh4JFxaUbNjhoHSCWrThIsr9gUrge11Lwvktq0sGbmbz3UIYpsuRvq6RSmogvCCKltgrLyjkZmWiwydWpE8G/yxnLLbqiaoxI8EjjwY7P3ndBIT+hvKRbC+K8LasJyiu4/r0BTItGzfai8wSDTeFUeysmwDAnitHRVdJmKTwiuaOdfJ7aADDa7rCFpl5Gurum39z
-        AWS_DEPLOY_BUCKET: githubactionsoui
-        AWS_BUCKET_PREFIX: stacks/ssc
-        PARAMETER_OVERRIDES: AliasName=ssc
+      - uses: actions/checkout@v2
+      - name: Load AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ASIA3LTHPFHCB7GORD4J
+          aws-secret-access-key: fK1oXVq0n473bprHXKv7GN+FSNcyr92R8gIoIfYi
+          aws-region: us-east-1
+          aws-session-token: FwoGZXIvYXdzEBIaDA6ItA1dNc/lag/82SLMARU7a6CbTyIzpxzTgcCPg1WkjFF8Qvp1apYkhBlo8EY47ZyKZKjTW77DMATaPqA7nkMLCsln+OEKByKADZcrccUC3ZVD0JQLmZMHbQfKYyBYqzFc+ldtJji9weFcfpYhpPbLgZgu7Ilv05u3hQ0fZh4JFxaUbNjhoHSCWrThIsr9gUrge11Lwvktq0sGbmbz3UIYpsuRvq6RSmogvCCKltgrLyjkZmWiwydWpE8G/yxnLLbqiaoxI8EjjwY7P3ndBIT+hvKRbC+K8LasJyiu4/r0BTItGzfai8wSDTeFUeysmwDAnitHRVdJmKTwiuaOdfJ7aADDa7rCFpl5Gurum39z
+      - name: Deploy App Stack
+        id: deploy
+        uses: alexjurkiewicz/cfn-deploy@v2.0.1
+        with:
+          stackName: sylvain-stack
+          templateFile: template.yml
+      - name: Print App Hostname
+        run: echo ${{ steps.deploy.outputs.cf_output_AppHostname }}
