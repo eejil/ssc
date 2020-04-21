@@ -25,7 +25,7 @@ jobs:
       
     - name: eks
       run: |
-        sed -i "s#IMAGE_NAME#<add-your-image-name-here>#g" kustomization.yaml
+        sed -i "s#IMAGE_NAME#Dockerfile#g" kustomization.yaml
         sed -i "s/IMAGE_TAG/sha-$(git rev-parse --short HEAD)/g" kustomization.yaml
         aws eks update-kubeconfig --name isen
         kubectl kustomize . | kubectl apply -f -
@@ -37,10 +37,10 @@ jobs:
       - name: Load AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ASIA3LTHPFHCB7GORD4J
-          aws-secret-access-key: fK1oXVq0n473bprHXKv7GN+FSNcyr92R8gIoIfYi
+          aws-access-key-id: ASIA3LTHPFHCKMID5Z7N
+          aws-secret-access-key: /bPpMPrC752oqjNtdMlKFxz2mhFJmIclrehc7Kfw
           aws-region: us-east-1
-          aws-session-token: FwoGZXIvYXdzEBIaDA6ItA1dNc/lag/82SLMARU7a6CbTyIzpxzTgcCPg1WkjFF8Qvp1apYkhBlo8EY47ZyKZKjTW77DMATaPqA7nkMLCsln+OEKByKADZcrccUC3ZVD0JQLmZMHbQfKYyBYqzFc+ldtJji9weFcfpYhpPbLgZgu7Ilv05u3hQ0fZh4JFxaUbNjhoHSCWrThIsr9gUrge11Lwvktq0sGbmbz3UIYpsuRvq6RSmogvCCKltgrLyjkZmWiwydWpE8G/yxnLLbqiaoxI8EjjwY7P3ndBIT+hvKRbC+K8LasJyiu4/r0BTItGzfai8wSDTeFUeysmwDAnitHRVdJmKTwiuaOdfJ7aADDa7rCFpl5Gurum39z
+          aws-session-token: FwoGZXIvYXdzEBcaDGFINnN7TrudcLD30CLMARfXfk7BFNVjLzHBXXoqGac26/Wd5mXhrZ1b5YGB4nfp8XyDIQQczDcpD2FEeFbAwNVDopZ6lbCo84ibrjGJ6+p/+Tz+Nn6pgN+eUnPN91PzWoZsnKSPu8HliJVK16IXjExEIPxble0NywXEPh5JcDk1HFCbYTZvYgi2eren3TzjX646HrBecOpOT/F6CKxPYv63KuM4h6SF+3I4835Ksh7/dlNUtFGblteliPkruC6XLYfUDkMULDzDoeBGIIthpQeSelbirdis8WWj2Si46vv0BTItsHSfM0enaeIHKKXpLPvZ6uI1xXV20FIEXUZHb2GRWq2Z9t1Uwa7MCnwhwlsT
       - name: Deploy App Stack
         id: deploy
         uses: alexjurkiewicz/cfn-deploy@v2.0.1
