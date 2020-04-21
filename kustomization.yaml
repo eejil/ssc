@@ -6,6 +6,4 @@ images:
   - name: mywebserver
     newName: IMAGE_NAME
     newTag: IMAGE_TAG
-availabilityZones: 
-  - us-east-1c
-  - us-east-1d
+
