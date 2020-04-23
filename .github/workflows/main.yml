@@ -32,10 +32,10 @@ jobs:
       - name: Load AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ASIA3LTHPFHCKMID5Z7N
-          aws-secret-access-key: /bPpMPrC752oqjNtdMlKFxz2mhFJmIclrehc7Kfw
+          aws-access-key-id: ASIA3LTHPFHCPQOQ6XSC
+          aws-secret-access-key: /UbcYXQAjjgTac5CdexQsf6GmRm3YB+iSk5BbC3t
           aws-region: us-east-1
-          aws-session-token: FwoGZXIvYXdzEBcaDGFINnN7TrudcLD30CLMARfXfk7BFNVjLzHBXXoqGac26/Wd5mXhrZ1b5YGB4nfp8XyDIQQczDcpD2FEeFbAwNVDopZ6lbCo84ibrjGJ6+p/+Tz+Nn6pgN+eUnPN91PzWoZsnKSPu8HliJVK16IXjExEIPxble0NywXEPh5JcDk1HFCbYTZvYgi2eren3TzjX646HrBecOpOT/F6CKxPYv63KuM4h6SF+3I4835Ksh7/dlNUtFGblteliPkruC6XLYfUDkMULDzDoeBGIIthpQeSelbirdis8WWj2Si46vv0BTItsHSfM0enaeIHKKXpLPvZ6uI1xXV20FIEXUZHb2GRWq2Z9t1Uwa7MCnwhwlsT
+          aws-session-token: FwoGZXIvYXdzED8aDFO3hFGUywBzfWzpOCLMAQUlDJpYs8paWou76iuGPokMDlmr8er+Fzg0QCDme2ldzI0THpwh01ygEIQr9vo4M8A0yLtIa4Zf+07MoOM/DukuEQgbyG986tbAKyO0zu6YdLe8rlvPphXGqNN8bjxkIKj+fLiqo33hQ07Y7A8U0KfgV716cxwvft0OZH8LVf/2uKwW6WXHcbUvy0t8WWBLbJLvPNfcdz2NZG6R+pIcnjnCDedH84bXN7dDtudyAhoDeQ9gZGEOxpACk28w6Ei3hCt5eOq7+WOPeTheHyja3YT1BTItE6JSzY2P0UM9lGvYk0m/5N1trWoVpMj2Qy9KwMlcUFuEtxWk7LJz1lITz+OD
       - name: Deploy App Stack
         id: deploy
         uses: alexjurkiewicz/cfn-deploy@v2.0.1
